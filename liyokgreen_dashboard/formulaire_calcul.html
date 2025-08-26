@@ -254,24 +254,6 @@
                       <button id="calculateBtn" type="button" class="btn btn-lg bg-gradient-dark btn-lg w-100 mt-4 mb-0">Calculer</button>
                     </div>
                   </form>
-                  <!-- Modal Bootstrap -->
-                  <div class="modal fade" id="resultModal" tabindex="-1" aria-labelledby="resultModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-                      <div class="modal-content">
-                        <div class="modal-header bg-dark text-white">
-                          <h5 class="modal-title" id="resultModalLabel">🌍 Résultats du Bilan Carbone</h5>
-                          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fermer"></button>
-                        </div>
-                        <div class="modal-body">
-                          <div id="resultContent" class="p-3"></div>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
 
                 </div>
               </div>
@@ -416,11 +398,8 @@
           <p>Impact potentiel : <strong>${(co2AbsorbeAn / emissions * 100).toFixed(1)}%</strong> compensé en 1 an</p>
         `;
       
-        document.getElementById("resultContent").innerHTML = resultHTML;
-      
-        // 6. Afficher la modale Bootstrap
-        let modal = new bootstrap.Modal(document.getElementById("resultModal"));
-        modal.show();
+        // 6. Afficher le popup
+        alert(resultat);
       });
   </script>
 
