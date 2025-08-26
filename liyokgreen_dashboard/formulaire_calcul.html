@@ -369,12 +369,6 @@
             "CH₄": emissions * 0.07,  // 7%
             "N₂O": emissions * 0.03   // 3%
           };
-          
-          // Ajouter dans le résultat
-          resultat += `\n🌐 Par gaz à effet de serre :\n`;
-          for (let [gaz, valeur] of Object.entries(ges)) {
-            resultat += `- ${gaz} : ${valeur.toFixed(2)} kgCO₂e\n`;
-          }
 
           // Répartition par Scope (simplifiée)
           let scopes = {
@@ -382,12 +376,6 @@
             "Scope 2 (énergie achetée)": details["Électricité"] || 0,
             "Scope 3 (autres indirectes)": (details["Transport marchandises"] || 0) + (details["Déchets"] || 0)
           };
-          
-          // Ajouter dans le résultat
-          resultat += `\n📑 Par Scope :\n`;
-          for (let [s, valeur] of Object.entries(scopes)) {
-            resultat += `- ${s} : ${valeur.toFixed(2)} kgCO₂e\n`;
-          }
         
           // 4. Compensation carbone par arbres
           let absorptionParMois = 5; // kgCO2 / arbre / mois
@@ -401,6 +389,16 @@
           resultat += `📊 Par facteur :\n`;
           for (let [k, v] of Object.entries(details)) {
             resultat += `- ${k} : ${v.toFixed(2)} kgCO₂e\n`;
+          }
+          // Ajouter dans le résultat
+          resultat += `\n📑 Par Scope :\n`;
+          for (let [s, valeur] of Object.entries(scopes)) {
+            resultat += `- ${s} : ${valeur.toFixed(2)} kgCO₂e\n`;
+          }
+          // Ajouter dans le résultat
+          resultat += `\n🌐 Par gaz à effet de serre :\n`;
+          for (let [gaz, valeur] of Object.entries(ges)) {
+            resultat += `- ${gaz} : ${valeur.toFixed(2)} kgCO₂e\n`;
           }
           resultat += `\n🌱 Compensation carbone :\n`;
           resultat += `- Arbres à planter : ${nbArbres}\n`;
