@@ -251,7 +251,7 @@
                           <div id="resultContent" class="p-3"></div>
                         </div>
                         <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                          <button id="calculateBtn" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
                         </div>
                       </div>
                     </div>
@@ -284,7 +284,7 @@
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="assets/js/material-dashboard.min.js?v=3.2.0"></script>
   <script>
-      document.querySelector("button").addEventListener("click", function() {
+      document.getElementById("calculateBtn").addEventListener("click", function() {
         // 1. Récupération des valeurs
         let consommationElec = parseFloat(document.querySelectorAll("input[type='number']")[0].value) || 0;
         let distanceParcourue = parseFloat(document.querySelectorAll("input[type='number']")[1].value) || 0;
