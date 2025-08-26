@@ -31,26 +31,26 @@
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
     <!-- CSS -->
-<style>
-.slider-wrapper {
-    width: 100%;
-    overflow: hidden;
-    position: relative;
-}
-.slider-track {
-    display: flex;
-    animation: scroll 12s linear infinite;
-}
-.slider-track img {
-    width: 100%;
-    height: auto;
-    flex-shrink: 0;
-}
-@keyframes scroll {
-    0%   { transform: translateX(0); }
-    100% { transform: translateX(-200%); } /* dépend du nombre d’images */
-}
-</style>
+    <style>
+        .slider-container {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+        .slider {
+            display: flex;
+            width: 300%; /* dépend du nombre d’images */
+            height: 100%;
+            transition: transform 0.8s ease-in-out;
+        }
+        .slider img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+    </style>
 </head>
 
 <body>
@@ -141,22 +141,22 @@
 
 
     <!-- About Start -->
-    <div class="container-xxl py-5">
+   <div class="container-xxl py-5">
     <div class="container">
         <div class="row g-5">
-            
-            <!-- Partie image remplacée par un scroll -->
-            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px; overflow: hidden;">
-                <div class="slider-wrapper position-relative h-100">
-                    <div class="slider-track d-flex h-100">
-                        <img class="img-fluid" src="img/a_propos.jpeg" alt="" style="object-fit: cover; flex-shrink: 0; width:100%; height:100%;">
-                        <img class="img-fluid" src="img/a_propos.jpeg" alt="" style="object-fit: cover; flex-shrink: 0; width:100%; height:100%;">
-                        <img class="img-fluid" src="img/a_propos.jpeg" alt="" style="object-fit: cover; flex-shrink: 0; width:100%; height:100%;">
+
+            <!-- SLIDER -->
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
+                <div class="slider-container position-relative h-100">
+                    <div class="slider">
+                        <img src="img/a_propos.jpeg" alt="Image 1">
+                        <img src="img/a_propos2.jpeg" alt="Image 2">
+                        <img src="img/a_propos3.jpeg" alt="Image 3">
                     </div>
                 </div>
             </div>
 
-            <!-- Partie texte -->
+            <!-- TEXTE -->
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
                 <h6 class="section-title bg-white text-start text-primary pe-3">A propos de nous</h6>
                 <h1 class="mb-4">Start-up <span class="text-primary">LIYOKGREEN</span></h1>
@@ -175,7 +175,6 @@
         </div>
     </div>
 </div>
-
 
 <!--     <div class="container-xxl py-5">
         <div class="container">
@@ -446,7 +445,7 @@
 
 
     <!-- Booking Start -->
-    <!-- <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container">
             <div class="booking p-5">
                 <div class="row g-5 align-items-center">
@@ -504,7 +503,7 @@
                 </div>
             </div>
         </div>
-    </div> -->
+    </div>
     <!-- Booking Start -->
 
 
@@ -752,6 +751,22 @@
             const emission = (consumption * emissionFactor).toFixed(2); // kg CO2e
             input.value = `${emission} kg CO₂e`;
         });
+    </script>
+    <!-- JS -->
+    <script>
+        let index = 0;
+        const slides = document.querySelectorAll(".slider img");
+        const total = slides.length;
+        const slider = document.querySelector(".slider");
+        
+        function showSlide() {
+            index++;
+            if (index >= total) index = 0;
+            slider.style.transform = `translateX(-${index * 100}%)`;
+        }
+        
+        // Défile toutes les 4 secondes
+        setInterval(showSlide, 4000);
     </script>
     <script src="js/main.js"></script>
 </body>
