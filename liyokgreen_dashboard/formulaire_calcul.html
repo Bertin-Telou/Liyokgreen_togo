@@ -282,136 +282,109 @@
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="assets/js/material-dashboard.min.js?v=3.2.0"></script>
-     <script>
-        document.querySelector("calculer").addEventListener("click", function() {
-          // 1. Récupération des valeurs
-          let consommationElec = parseFloat(document.querySelectorAll("input[type='number']")[0].value) || 0;
-          let distanceParcourue = parseFloat(document.querySelectorAll("input[type='number']")[1].value) || 0;
-          let typeEngin = document.querySelectorAll("select")[0].value;
-          let typeCarburant = document.querySelectorAll("select")[1].value;
-          let nbEngins = parseFloat(document.querySelectorAll("input[type='number']")[2].value) || 0;
-          let poidsTransport = parseFloat(document.querySelectorAll("input[type='number']")[3].value) || 0;
-          let typeTransport = document.querySelectorAll("select")[2].value;
-          let distanceTransport = parseFloat(document.querySelectorAll("input[type='number']")[4].value) || 0;
-          let consoElecTransport = parseFloat(document.querySelectorAll("input[type='number']")[5].value) || 0;
-          let typeMateriel = document.querySelectorAll("select")[3].value;
-          let frequenceUtilisation = document.querySelectorAll("select")[4].value;
-          let typeDechet = document.querySelectorAll("select")[5].value;
-          let quantiteDechet = parseFloat(document.querySelectorAll("input[type='number']")[6].value) || 0;
-          let methodeDechet = document.querySelectorAll("select")[6].value;
-          let typeProduit = document.querySelectorAll("select")[7].value;
-          let usageProduit = document.querySelectorAll("select")[8].value;
-          let dureeVieProduit = parseFloat(document.querySelectorAll("input[type='number']")[7].value) || 0;
-        
-          // 2. Facteurs d’émission approximatifs (kgCO2e / unité)
-          const facteurs = {
-            electricite: 0.233, // kgCO2e/kWh
-            essence: 2.31,      // kgCO2e/litre équivalent
-            diesel: 2.68,
-            gnv: 2.75,
-            electricCar: 0.05,  // faible car indirect
-            hydrogene: 0.1,
-            biocarburant: 1.2,
-            transport: 0.1,     // kgCO2e / tonne.km
-            dechet: {
-              plastique: 2.5,
-              metal: 1.8,
-              papier: 1.0,
-              verre: 0.85,
-              organique: 0.2,
-              electronique: 3.5,
-              dangereux: 5.0
-            }
-          };
-        
-          // 3. Calcul des émissions
-          let emissions = 0;
-          let details = {};
-        
-          // Electricité
-          let eElec = consommationElec * facteurs.electricite;
-          details["Électricité"] = eElec;
-          emissions += eElec;
-        
-          // Carburant
-          let facteurCarburant = 0;
-          if (typeCarburant === "Essence") facteurCarburant = facteurs.essence;
-          if (typeCarburant === "Diesel") facteurCarburant = facteurs.diesel;
-          if (typeCarburant === "Gaz naturel (GNV)") facteurCarburant = facteurs.gnv;
-          if (typeCarburant === "Électricité") facteurCarburant = facteurs.electricCar;
-          if (typeCarburant === "Hydrogène") facteurCarburant = facteurs.hydrogene;
-          if (typeCarburant === "Biocarburant") facteurCarburant = facteurs.biocarburant;
-        
-          let eCarburant = distanceParcourue * nbEngins * facteurCarburant * 0.2; // simplification
-          details["Carburant"] = eCarburant;
-          emissions += eCarburant;
-        
-          // Transport marchandises
-          let tonnes = poidsTransport / 1000;
-          let eTransport = tonnes * distanceTransport * facteurs.transport;
-          details["Transport marchandises"] = eTransport;
-          emissions += eTransport;
-        
-          // Déchets
-          let facteurDechet = facteurs.dechet[typeDechet.toLowerCase()] || 1.0;
-          let eDechet = quantiteDechet * facteurDechet;
-          details["Déchets"] = eDechet;
-          emissions += eDechet;
-        
-          // Produits (durée de vie → amorti sur 1 an)
-          let eProduit = (dureeVieProduit > 0) ? (20 / dureeVieProduit) : 0; 
-          details["Produits"] = eProduit;
-          emissions += eProduit;
-        
-          // 4. Compensation carbone par arbres
-          let absorptionParMois = 5; // kgCO2 / arbre / mois
-          let absorptionParAn = 60;  // kgCO2 / arbre / an
-          let nbArbres = Math.ceil(emissions / absorptionParMois);
-          let co2AbsorbeAn = nbArbres * absorptionParAn;
-        
-          // 5. Préparer le résultat
-          let resultat = `🌍 Bilan Carbone estimé\n\n`;
-          resultat += `➡️ Total : ${emissions.toFixed(2)} kgCO₂e\n\n`;
-        
-          // Par facteur
-          resultat += `📊 Par facteur :\n`;
-          for (let [k, v] of Object.entries(details)) {
-            resultat += `- ${k} : ${v.toFixed(2)} kgCO₂e\n`;
+   <script>
+      document.querySelector("calculer").addEventListener("click", function() {
+        // 1. Récupération des valeurs
+        let consommationElec = parseFloat(document.querySelectorAll("input[type='number']")[0].value) || 0;
+        let distanceParcourue = parseFloat(document.querySelectorAll("input[type='number']")[1].value) || 0;
+        let typeEngin = document.querySelectorAll("select")[0].value;
+        let typeCarburant = document.querySelectorAll("select")[1].value;
+        let nbEngins = parseFloat(document.querySelectorAll("input[type='number']")[2].value) || 0;
+        let poidsTransport = parseFloat(document.querySelectorAll("input[type='number']")[3].value) || 0;
+        let typeTransport = document.querySelectorAll("select")[2].value;
+        let distanceTransport = parseFloat(document.querySelectorAll("input[type='number']")[4].value) || 0;
+        let consoElecTransport = parseFloat(document.querySelectorAll("input[type='number']")[5].value) || 0;
+        let typeMateriel = document.querySelectorAll("select")[3].value;
+        let frequenceUtilisation = document.querySelectorAll("select")[4].value;
+        let typeDechet = document.querySelectorAll("select")[5].value;
+        let quantiteDechet = parseFloat(document.querySelectorAll("input[type='number']")[6].value) || 0;
+        let methodeDechet = document.querySelectorAll("select")[6].value;
+        let typeProduit = document.querySelectorAll("select")[7].value;
+        let usageProduit = document.querySelectorAll("select")[8].value;
+        let dureeVieProduit = parseFloat(document.querySelectorAll("input[type='number']")[7].value) || 0;
+      
+        // 2. Facteurs d’émission approximatifs (kgCO2e / unité)
+        const facteurs = {
+          electricite: 0.233, // kgCO2e/kWh
+          essence: 2.31,      // kgCO2e/litre équivalent
+          diesel: 2.68,
+          gnv: 2.75,
+          electricCar: 0.05,  // faible car indirect
+          hydrogene: 0.1,
+          biocarburant: 1.2,
+          transport: 0.1,     // kgCO2e / tonne.km
+          dechet: {
+            plastique: 2.5,
+            metal: 1.8,
+            papier: 1.0,
+            verre: 0.85,
+            organique: 0.2,
+            electronique: 3.5,
+            dangereux: 5.0
           }
-        
-          // 🔹 Par gaz à effet de serre
-          let ges = {
-            "CO₂": emissions * 0.9,
-            "CH₄": emissions * 0.07,
-            "N₂O": emissions * 0.03
-          };
-          resultat += `\n🌐 Par gaz à effet de serre :\n`;
-          for (let [gaz, valeur] of Object.entries(ges)) {
-            resultat += `- ${gaz} : ${valeur.toFixed(2)} kgCO₂e\n`;
-          }
-        
-          // 🔹 Par Scope
-          let scopes = {
-            "Scope 1 (émissions directes)": details["Carburant"] + (details["Produits"] || 0),
-            "Scope 2 (énergie achetée)": details["Électricité"] || 0,
-            "Scope 3 (autres indirectes)": (details["Transport marchandises"] || 0) + (details["Déchets"] || 0)
-          };
-          resultat += `\n📑 Par Scope :\n`;
-          for (let [s, valeur] of Object.entries(scopes)) {
-            resultat += `- ${s} : ${valeur.toFixed(2)} kgCO₂e\n`;
-          }
-        
-          // Compensation
-          resultat += `\n🌱 Compensation carbone :\n`;
-          resultat += `- Arbres à planter : ${nbArbres}\n`;
-          resultat += `- CO₂ absorbé en 1 an : ${co2AbsorbeAn.toFixed(2)} kgCO₂e\n`;
-          resultat += `\n✅ Impact : Réduction potentielle de ${(co2AbsorbeAn / emissions * 100).toFixed(1)}% sur un an`;
-        
-          // 6. Afficher le popup
-          alert(resultat);
-        });
-    </script>
-
+        };
+      
+        // 3. Calcul des émissions
+        let emissions = 0;
+        let details = {};
+      
+        // Electricité
+        let eElec = consommationElec * facteurs.electricite;
+        details["Électricité"] = eElec;
+        emissions += eElec;
+      
+        // Carburant
+        let facteurCarburant = 0;
+        if (typeCarburant === "Essence") facteurCarburant = facteurs.essence;
+        if (typeCarburant === "Diesel") facteurCarburant = facteurs.diesel;
+        if (typeCarburant === "Gaz naturel (GNV)") facteurCarburant = facteurs.gnv;
+        if (typeCarburant === "Électricité") facteurCarburant = facteurs.electricCar;
+        if (typeCarburant === "Hydrogène") facteurCarburant = facteurs.hydrogene;
+        if (typeCarburant === "Biocarburant") facteurCarburant = facteurs.biocarburant;
+      
+        let eCarburant = distanceParcourue * nbEngins * facteurCarburant * 0.2; // simplification
+        details["Carburant"] = eCarburant;
+        emissions += eCarburant;
+      
+        // Transport marchandises
+        let tonnes = poidsTransport / 1000;
+        let eTransport = tonnes * distanceTransport * facteurs.transport;
+        details["Transport marchandises"] = eTransport;
+        emissions += eTransport;
+      
+        // Déchets
+        let facteurDechet = facteurs.dechet[typeDechet.toLowerCase()] || 1.0;
+        let eDechet = quantiteDechet * facteurDechet;
+        details["Déchets"] = eDechet;
+        emissions += eDechet;
+      
+        // Produits (durée de vie → amorti sur 1 an)
+        let eProduit = (dureeVieProduit > 0) ? (20 / dureeVieProduit) : 0; 
+        details["Produits"] = eProduit;
+        emissions += eProduit;
+      
+        // 4. Compensation carbone par arbres
+        let absorptionParMois = 5; // kgCO2 / arbre / mois
+        let absorptionParAn = 60;  // kgCO2 / arbre / an
+        let nbArbres = Math.ceil(emissions / absorptionParMois);
+        let co2AbsorbeAn = nbArbres * absorptionParAn;
+      
+        // 5. Préparer le résultat
+        let resultat = `🌍 Bilan Carbone estimé\n\n`;
+        resultat += `➡️ Total : ${emissions.toFixed(2)} kgCO₂e\n\n`;
+        resultat += `📊 Par facteur :\n`;
+        for (let [k, v] of Object.entries(details)) {
+          resultat += `- ${k} : ${v.toFixed(2)} kgCO₂e\n`;
+        }
+        resultat += `\n🌱 Compensation carbone :\n`;
+        resultat += `- Arbres à planter : ${nbArbres}\n`;
+        resultat += `- CO₂ absorbé en 1 an : ${co2AbsorbeAn.toFixed(2)} kgCO₂e\n`;
+        resultat += `\n✅ Impact : Réduction potentielle de ${(co2AbsorbeAn / emissions * 100).toFixed(1)}% sur un an`;
+      
+        // 6. Afficher le popup
+        alert(resultat);
+      });
+  </script>
 
 </body>
 
