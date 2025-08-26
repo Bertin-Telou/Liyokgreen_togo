@@ -365,8 +365,8 @@
       let co2AbsorbeAn = nbArbres * absorptionParAn;
     
       // 5. Préparer le résultat
-      let resultat = `🌍 Bilan Carbone estimé\n\n`;
-      resultat += `➡️ Total : ${emissions.toFixed(2)} kgCO₂e\n\n`;
+      let resultat = `🌍 Bilan Carbone estimé\n`;
+      resultat += `➡️ Total : ${emissions.toFixed(2)} kgCO₂e\n`;
       resultat += `📊 Par facteur :\n`;
       for (let [k, v] of Object.entries(details)) {
         resultat += `- ${k} : ${v.toFixed(2)} kgCO₂e\n`;
