@@ -30,6 +30,27 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+    <!-- CSS -->
+<style>
+.slider-wrapper {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+.slider-track {
+    display: flex;
+    animation: scroll 12s linear infinite;
+}
+.slider-track img {
+    width: 100%;
+    height: auto;
+    flex-shrink: 0;
+}
+@keyframes scroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-200%); } /* dépend du nombre d’images */
+}
+</style>
 </head>
 
 <body>
@@ -111,10 +132,6 @@
                                     class="btn btn-primary rounded-pill py-2 px-4 position-absolute top-0 end-0 me-2" 
                                     style="margin-top: 7px;">Tester</button>
                         </div>
-                        <!-- <div class="position-relative w-75 mx-auto animated slideInDown">
-                            <input class="form-control border-0 rounded-pill w-100 py-3 ps-4 pe-5" type="text" placeholder="Entrez votre consommation en electricité pour tester">
-                            <button type="button" class="btn btn-primary rounded-pill py-2 px-4 position-absolute top-0 end-0 me-2" style="margin-top: 7px;">tester</button>
-                        </div> -->
                     </div>
                 </div>
             </div>
@@ -125,6 +142,42 @@
 
     <!-- About Start -->
     <div class="container-xxl py-5">
+    <div class="container">
+        <div class="row g-5">
+            
+            <!-- Partie image remplacée par un scroll -->
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px; overflow: hidden;">
+                <div class="slider-wrapper position-relative h-100">
+                    <div class="slider-track d-flex h-100">
+                        <img class="img-fluid" src="img/a_propos.jpeg" alt="" style="object-fit: cover; flex-shrink: 0; width:100%; height:100%;">
+                        <img class="img-fluid" src="img/a_propos.jpeg" alt="" style="object-fit: cover; flex-shrink: 0; width:100%; height:100%;">
+                        <img class="img-fluid" src="img/a_propos.jpeg" alt="" style="object-fit: cover; flex-shrink: 0; width:100%; height:100%;">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Partie texte -->
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
+                <h6 class="section-title bg-white text-start text-primary pe-3">A propos de nous</h6>
+                <h1 class="mb-4">Start-up <span class="text-primary">LIYOKGREEN</span></h1>
+                <p class="mb-4">LiyokGreen est une startup innovante spécialisée dans le calcul de bilan carbone, la capture carbone et la compensation carbone. </p>
+                <p class="mb-4">Nous accompagnons les entreprises et collectivités dans leur transition vers un modèle plus durable en leur fournissant des outils précis pour évaluer, réduire et compenser leur empreinte carbone. Grâce à une approche scientifique et technologique, LiyokGreen s’engage à transformer les défis climatiques en opportunités concrètes pour un avenir plus vert.</p>
+                <div class="row gy-2 gx-4 mb-4">
+                    <div class="col-sm-6"><p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Bilan carbone</p></div>
+                    <div class="col-sm-6"><p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>RSE</p></div>
+                    <div class="col-sm-6"><p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Compensation carbone</p></div>
+                    <div class="col-sm-6"><p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Logistic & Transport</p></div>
+                    <div class="col-sm-6"><p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Innovations</p></div>
+                    <div class="col-sm-6"><p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Service 24H/7</p></div>
+                </div>
+                <a class="btn btn-primary py-3 px-5 mt-2" href="">Contact</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--     <div class="container-xxl py-5">
         <div class="container">
             <div class="row g-5">
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
@@ -161,7 +214,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- About End -->
 
 
