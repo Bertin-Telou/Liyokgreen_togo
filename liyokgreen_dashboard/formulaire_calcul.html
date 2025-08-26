@@ -283,7 +283,7 @@
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="assets/js/material-dashboard.min.js?v=3.2.0"></script>
      <script>
-        document.querySelector("btn").addEventListener("click", function() {
+        document.querySelector("button").addEventListener("click", function() {
           // 1. Récupération des valeurs
           let consommationElec = parseFloat(document.querySelectorAll("input[type='number']")[0].value) || 0;
           let distanceParcourue = parseFloat(document.querySelectorAll("input[type='number']")[1].value) || 0;
@@ -362,20 +362,6 @@
           let eProduit = (dureeVieProduit > 0) ? (20 / dureeVieProduit) : 0; 
           details["Produits"] = eProduit;
           emissions += eProduit;
-
-          // Répartition par gaz (valeurs simplifiées en %)
-          let ges = {
-            "CO₂": emissions * 0.9,   // 90%
-            "CH₄": emissions * 0.07,  // 7%
-            "N₂O": emissions * 0.03   // 3%
-          };
-
-          // Répartition par Scope (simplifiée)
-          let scopes = {
-            "Scope 1 (émissions directes)": details["Carburant"] + (details["Produits"] || 0),
-            "Scope 2 (énergie achetée)": details["Électricité"] || 0,
-            "Scope 3 (autres indirectes)": (details["Transport marchandises"] || 0) + (details["Déchets"] || 0)
-          };
         
           // 4. Compensation carbone par arbres
           let absorptionParMois = 5; // kgCO2 / arbre / mois
@@ -386,20 +372,36 @@
           // 5. Préparer le résultat
           let resultat = `🌍 Bilan Carbone estimé\n\n`;
           resultat += `➡️ Total : ${emissions.toFixed(2)} kgCO₂e\n\n`;
+        
+          // Par facteur
           resultat += `📊 Par facteur :\n`;
           for (let [k, v] of Object.entries(details)) {
             resultat += `- ${k} : ${v.toFixed(2)} kgCO₂e\n`;
           }
-          // Ajouter dans le résultat
-          resultat += `\n📑 Par Scope :\n`;
-          for (let [s, valeur] of Object.entries(scopes)) {
-            resultat += `- ${s} : ${valeur.toFixed(2)} kgCO₂e\n`;
-          }
-          // Ajouter dans le résultat
+        
+          // 🔹 Par gaz à effet de serre
+          let ges = {
+            "CO₂": emissions * 0.9,
+            "CH₄": emissions * 0.07,
+            "N₂O": emissions * 0.03
+          };
           resultat += `\n🌐 Par gaz à effet de serre :\n`;
           for (let [gaz, valeur] of Object.entries(ges)) {
             resultat += `- ${gaz} : ${valeur.toFixed(2)} kgCO₂e\n`;
           }
+        
+          // 🔹 Par Scope
+          let scopes = {
+            "Scope 1 (émissions directes)": details["Carburant"] + (details["Produits"] || 0),
+            "Scope 2 (énergie achetée)": details["Électricité"] || 0,
+            "Scope 3 (autres indirectes)": (details["Transport marchandises"] || 0) + (details["Déchets"] || 0)
+          };
+          resultat += `\n📑 Par Scope :\n`;
+          for (let [s, valeur] of Object.entries(scopes)) {
+            resultat += `- ${s} : ${valeur.toFixed(2)} kgCO₂e\n`;
+          }
+        
+          // Compensation
           resultat += `\n🌱 Compensation carbone :\n`;
           resultat += `- Arbres à planter : ${nbArbres}\n`;
           resultat += `- CO₂ absorbé en 1 an : ${co2AbsorbeAn.toFixed(2)} kgCO₂e\n`;
@@ -409,6 +411,7 @@
           alert(resultat);
         });
     </script>
+
 
 </body>
 
