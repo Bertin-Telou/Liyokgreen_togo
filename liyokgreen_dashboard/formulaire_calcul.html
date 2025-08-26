@@ -54,84 +54,187 @@
                 </div>
                 <div class="card-body">
                   <form role="form">
+                    <!-- Consommation électrique -->
                     <div class="input-group input-group-outline mb-3">
-                      <label class="form-label">Consommation d'éléctricité</label>
-                      <input type="text" class="form-control">
+                      <label class="form-label">Consommation d'électricité (kWh)</label>
+                      <input type="number" class="form-control">
                     </div>
+                  
+                    <!-- Distance parcourue -->
                     <div class="input-group input-group-outline mb-3">
-                      <label class="form-label">Distance parcourus</label>
-                      <input type="email" class="form-control">
+                      <label class="form-label">Distance parcourue (Km)</label>
+                      <input type="number" class="form-control">
                     </div>
+                  
+                    <!-- Type d'engins -->
                     <div class="input-group input-group-outline mb-3">
-                      <label class="form-label">Type d'enjins</label>
-                      <input type="password" class="form-control">
+                      <label class="form-label">Type d'engins</label>
+                      <select class="form-control">
+                        <option value="">-- Sélectionner --</option>
+                        <option>Voiture</option>
+                        <option>Camion</option>
+                        <option>Bus</option>
+                        <option>Moto</option>
+                        <option>Engin agricole</option>
+                        <option>Machine industrielle</option>
+                      </select>
                     </div>
+                  
+                    <!-- Type de carburant -->
                     <div class="input-group input-group-outline mb-3">
                       <label class="form-label">Type de carburant</label>
-                      <input type="text" class="form-control">
+                      <select class="form-control">
+                        <option value="">-- Sélectionner --</option>
+                        <option>Essence</option>
+                        <option>Diesel</option>
+                        <option>Gaz naturel (GNV)</option>
+                        <option>Électricité</option>
+                        <option>Hydrogène</option>
+                        <option>Biocarburant</option>
+                      </select>
                     </div>
+                  
+                    <!-- Nombre d'engins -->
                     <div class="input-group input-group-outline mb-3">
-                      <label class="form-label">Nombres d'enjins</label>
-                      <input type="email" class="form-control">
+                      <label class="form-label">Nombre d'engins</label>
+                      <input type="number" class="form-control">
                     </div>
+                  
+                    <!-- Poids transporté -->
                     <div class="input-group input-group-outline mb-3">
-                      <label class="form-label">Poids des transports</label>
-                      <input type="password" class="form-control">
+                      <label class="form-label">Poids des transports (Kg)</label>
+                      <input type="number" class="form-control">
                     </div>
+                  
+                    <!-- Type de transport -->
                     <div class="input-group input-group-outline mb-3">
-                      <label class="form-label">Type de transport(avions, bateau)</label>
-                      <input type="password" class="form-control">
+                      <label class="form-label">Type de transport</label>
+                      <select class="form-control">
+                        <option value="">-- Sélectionner --</option>
+                        <option>Avion</option>
+                        <option>Bateau</option>
+                        <option>Train</option>
+                        <option>Camion</option>
+                        <option>Voiture</option>
+                      </select>
                     </div>
+                  
+                    <!-- Distance transport -->
                     <div class="input-group input-group-outline mb-3">
-                      <label class="form-label">Distance des Transports</label>
-                      <input type="password" class="form-control">
+                      <label class="form-label">Distance des transports (Km)</label>
+                      <input type="number" class="form-control">
                     </div>
+                  
+                    <!-- Consommation électrique transport -->
                     <div class="input-group input-group-outline mb-3">
-                      <label class="form-label">Consommationd'électricité</label>
-                      <input type="text" class="form-control">
+                      <label class="form-label">Consommation d'électricité (kWh)</label>
+                      <input type="number" class="form-control">
                     </div>
+                  
+                    <!-- Type de matériel -->
                     <div class="input-group input-group-outline mb-3">
-                      <label class="form-label">Types de materiels</label>
-                      <input type="email" class="form-control">
+                      <label class="form-label">Types de matériels utilisés</label>
+                      <select class="form-control">
+                        <option value="">-- Sélectionner --</option>
+                        <option>Matériaux de construction</option>
+                        <option>Équipements électroniques</option>
+                        <option>Machines lourdes</option>
+                        <option>Outils manuels</option>
+                        <option>Mobilier</option>
+                      </select>
                     </div>
+                  
+                    <!-- Fréquence d'utilisation -->
                     <div class="input-group input-group-outline mb-3">
-                      <label class="form-label">Frequence d'utilisation</label>
-                      <input type="password" class="form-control">
+                      <label class="form-label">Fréquence d'utilisation</label>
+                      <select class="form-control">
+                        <option value="">-- Sélectionner --</option>
+                        <option>Quotidienne</option>
+                        <option>Hebdomadaire</option>
+                        <option>Mensuelle</option>
+                        <option>Occasionnelle</option>
+                      </select>
                     </div>
+                  
+                    <!-- Type de déchets -->
                     <div class="input-group input-group-outline mb-3">
-                      <label class="form-label">Type de déchéts</label>
-                      <input type="password" class="form-control">
+                      <label class="form-label">Type de déchets</label>
+                      <select class="form-control">
+                        <option value="">-- Sélectionner --</option>
+                        <option>Plastiques</option>
+                        <option>Métaux</option>
+                        <option>Papiers / Cartons</option>
+                        <option>Verre</option>
+                        <option>Déchets organiques</option>
+                        <option>Déchets électroniques</option>
+                        <option>Déchets dangereux</option>
+                      </select>
                     </div>
+                  
+                    <!-- Quantité de déchets -->
                     <div class="input-group input-group-outline mb-3">
-                      <label class="form-label">Quantités de déchéts</label>
-                      <input type="password" class="form-control">
+                      <label class="form-label">Quantité de déchets (Kg)</label>
+                      <input type="number" class="form-control">
                     </div>
+                  
+                    <!-- Méthode de traitement -->
                     <div class="input-group input-group-outline mb-3">
-                      <label class="form-label">ode de traitement des déchéts</label>
-                      <input type="password" class="form-control">
+                      <label class="form-label">Méthode de traitement des déchets</label>
+                      <select class="form-control">
+                        <option value="">-- Sélectionner --</option>
+                        <option>Recyclage</option>
+                        <option>Incinération</option>
+                        <option>Compostage</option>
+                        <option>Enfouissement</option>
+                        <option>Réutilisation</option>
+                      </select>
                     </div>
+                  
+                    <!-- Type de produits utilisés -->
                     <div class="input-group input-group-outline mb-3">
-                      <label class="form-label">Type de produits achéter</label>
-                      <input type="password" class="form-control">
+                      <label class="form-label">Type de produits utilisés</label>
+                      <select class="form-control">
+                        <option value="">-- Sélectionner --</option>
+                        <option>Produits chimiques</option>
+                        <option>Produits alimentaires</option>
+                        <option>Produits pharmaceutiques</option>
+                        <option>Produits ménagers</option>
+                        <option>Produits industriels</option>
+                      </select>
                     </div>
+                  
+                    <!-- Usage des produits -->
                     <div class="input-group input-group-outline mb-3">
                       <label class="form-label">Usages des produits</label>
-                      <input type="password" class="form-control">
+                      <select class="form-control">
+                        <option value="">-- Sélectionner --</option>
+                        <option>Consommation humaine</option>
+                        <option>Usage industriel</option>
+                        <option>Usage domestique</option>
+                        <option>Usage agricole</option>
+                      </select>
                     </div>
+                  
+                    <!-- Durée de vie -->
                     <div class="input-group input-group-outline mb-3">
-                      <label class="form-label">Durée de vie des produits</label>
-                      <input type="password" class="form-control">
+                      <label class="form-label">Durée de vie des produits (années)</label>
+                      <input type="number" class="form-control">
                     </div>
+                  
+                    <!-- Conditions -->
                     <div class="form-check form-check-info text-start ps-0">
                       <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
                       <label class="form-check-label" for="flexCheckDefault">
                         J'accepte <a href="javascript:;" class="text-dark font-weight-bolder">les termes et les conditions</a>
                       </label>
                     </div>
+                  
+                    <!-- Bouton -->
                     <div class="text-center">
                       <button type="button" class="btn btn-lg bg-gradient-dark btn-lg w-100 mt-4 mb-0">Calculer</button>
                     </div>
                   </form>
+
                 </div>
               </div>
             </div>
