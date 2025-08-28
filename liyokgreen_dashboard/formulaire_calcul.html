@@ -90,7 +90,7 @@
                         <option>Essence</option>
                         <option>Diesel</option>
                         <option>Kérosène</option>
-                        <option>Fuel lourd</option>
+                        <option>Fuel</option>
                         <option>Gaz naturel (GNV)</option>
                         <option>Électricité</option>
                         <option>Hydrogène</option>
@@ -292,6 +292,8 @@
         electricite: 0.233, // kgCO2e/kWh
         essence: 2.31,      // kgCO2e/litre équivalent
         diesel: 2.68,
+        kérosène: 2.58,
+        fuel: 2.70,
         gnv: 2.75,
         electricCar: 0.05,  // faible car indirect
         hydrogene: 0.1,
@@ -321,6 +323,8 @@
       let facteurCarburant = 0;
       if (typeCarburant === "Essence") facteurCarburant = facteurs.essence;
       if (typeCarburant === "Diesel") facteurCarburant = facteurs.diesel;
+      if (typeCarburant === "Kérosène") facteurCarburant = facteurs.kérosène;
+      if (typeCarburant === "Fuel") facteurCarburant = facteurs.fuel;
       if (typeCarburant === "Gaz naturel (GNV)") facteurCarburant = facteurs.gnv;
       if (typeCarburant === "Électricité") facteurCarburant = facteurs.electricCar;
       if (typeCarburant === "Hydrogène") facteurCarburant = facteurs.hydrogene;
