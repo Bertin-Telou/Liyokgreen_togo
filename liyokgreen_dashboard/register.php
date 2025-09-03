@@ -26,7 +26,10 @@ if (isset($_POST['register'])) {
                 $insert = $pdo->prepare("INSERT INTO users (nom, email, password) VALUES (?, ?, ?)");
                 $insert->execute([$nom, $email, $hashedPassword]);
 
-                echo "✅ Inscription réussie ! Vous pouvez vous connecter.";
+                //echo "✅ Inscription réussie ! Vous pouvez vous connecter.";
+                // Rediriger vers la page d’accueil personnalisée
+                header("Location: sign-in.html);
+                exit;
             }
         } else {
             echo "⚠️ Les mots de passe ne correspondent pas.";
