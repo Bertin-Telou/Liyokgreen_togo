@@ -53,33 +53,32 @@
                   <p class="mb-0">Entrez votre email et un mot de passe pour vous inscrire</p>
                 </div>
                 <div class="card-body">
-                  <form role="form">
+                  <form action="register.php" method="POST">
                     <div class="input-group input-group-outline mb-3">
-                      <label class="form-label">Nom</label>
-                      <input type="text" class="form-control">
+                        <label class="form-label">Nom</label>
+                        <input type="text" name="nom" class="form-control" required>
                     </div>
                     <div class="input-group input-group-outline mb-3">
-                      <label class="form-label">Email</label>
-                      <input type="email" class="form-control">
+                        <label class="form-label">Email</label>
+                        <input type="email" name="email" class="form-control" required>
                     </div>
                     <div class="input-group input-group-outline mb-3">
-                      <label class="form-label">Mot de passe</label>
-                      <input type="password" class="form-control">
+                        <label class="form-label">Mot de passe</label>
+                        <input type="password" name="password" class="form-control" required>
                     </div>
                     <div class="input-group input-group-outline mb-3">
-                      <label class="form-label">Confirmer le mot de passe</label>
-                      <input type="password" class="form-control">
+                        <label class="form-label">Confirmer le mot de passe</label>
+                        <input type="password" name="password_confirm" class="form-control" required>
                     </div>
                     <div class="form-check form-check-info text-start ps-0">
-                      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
-                      <label class="form-check-label" for="flexCheckDefault">
-                        J'accepte <a href="javascript:;" class="text-dark font-weight-bolder">les termes et les conditions</a>
-                      </label>
+                        <input class="form-check-input" type="checkbox" required>
+                        <label class="form-check-label">J'accepte les termes</label>
                     </div>
                     <div class="text-center">
-                      <button type="button" class="btn btn-lg bg-gradient-dark btn-lg w-100 mt-4 mb-0">S'inscrire</button>
+                        <button type="submit" name="register" class="btn btn-lg bg-gradient-dark w-100 mt-4 mb-0">S'inscrire</button>
                     </div>
                   </form>
+
                 </div>
                 <div class="card-footer text-center pt-0 px-lg-2 px-1">
                   <p class="mb-2 text-sm mx-auto">
